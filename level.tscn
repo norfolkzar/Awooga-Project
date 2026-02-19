@@ -28,4 +28,5 @@ position = Vector2(734, 700)
 shape = SubResource("RectangleShape2D_oi3di")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1321684472]
+position = Vector2(643, 354)
 script = ExtResource("3_oi3di")
