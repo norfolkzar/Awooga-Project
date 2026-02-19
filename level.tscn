@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dp1n7xievr2ju"]
+
+[ext_resource type="Script" uid="uid://ba08qv88abuc1" path="res://character_body_2d.gd" id="1_u52ul"]
+[ext_resource type="Texture2D" uid="uid://84c73kdnus3f" path="res://icon.svg" id="2_oi3di"]
+[ext_resource type="Script" uid="uid://cl244qq7c0r57" path="res://camera_2d.gd" id="3_oi3di"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vonw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi3di"]
+size = Vector2(3000, 10)
+
+[node name="Level" type="Node2D" unique_id=1270676885]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=655380877]
+position = Vector2(763, 252)
+script = ExtResource("1_u52ul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1592016517]
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1438363204]
+texture = ExtResource("2_oi3di")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2036042101]
+position = Vector2(734, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=246748153]
+shape = SubResource("RectangleShape2D_oi3di")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1321684472]
+script = ExtResource("3_oi3di")
