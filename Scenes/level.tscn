@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://dp1n7xievr2ju"]
 
-[ext_resource type="Script" uid="uid://ba08qv88abuc1" path="res://character_body_2d.gd" id="1_u52ul"]
-[ext_resource type="Texture2D" uid="uid://84c73kdnus3f" path="res://icon.svg" id="2_oi3di"]
-[ext_resource type="Script" uid="uid://cl244qq7c0r57" path="res://camera_2d.gd" id="3_oi3di"]
+[ext_resource type="Script" uid="uid://ba08qv88abuc1" path="res://Scripts/player.gd" id="1_u52ul"]
+[ext_resource type="Texture2D" uid="uid://b7g5hdskx80t8" path="res://placeholder/knight_facing_left_0.png" id="2_vonw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vonw3"]
 
@@ -19,14 +18,20 @@ script = ExtResource("1_u52ul")
 shape = SubResource("RectangleShape2D_vonw3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1438363204]
-texture = ExtResource("2_oi3di")
+texture = ExtResource("2_vonw3")
+
+[node name="DashCooldownTimer" type="Timer" parent="Player" unique_id=994930337]
+wait_time = 15.0
+
+[node name="SmoothDashTimer" type="Timer" parent="Player" unique_id=1283499196]
+wait_time = 0.3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2036042101]
-position = Vector2(734, 700)
+position = Vector2(716, 529)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=246748153]
+position = Vector2(3, -5)
 shape = SubResource("RectangleShape2D_oi3di")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1321684472]
-position = Vector2(643, 354)
-script = ExtResource("3_oi3di")
+[connection signal="timeout" from="Player/DashCooldownTimer" to="Player" method="_on_dash_cooldown_timer_timeout"]
+[connection signal="timeout" from="Player/SmoothDashTimer" to="Player" method="_on_smooth_dash_timer_timeout"]
